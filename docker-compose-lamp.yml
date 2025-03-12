@@ -7,8 +7,6 @@ services:
       - "8080:80"
     volumes:
       - ./html:/var/www/html
-      - .apache/siteAva/:/etc/apache2/sites-available
-      - .apache/siteEnab/:etc/apache2/sites-enabled
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: lamp_user
