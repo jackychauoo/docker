@@ -18,6 +18,7 @@ services:
     image: mysql:5.7
     container_name: mysql
     environment:
+      MYSQL_MAX_ALLOWED_PACKET: 64M
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: lamp_db
       MYSQL_USER: lamp_user
