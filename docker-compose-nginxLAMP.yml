@@ -2,7 +2,6 @@ services:
   apache:
     image: wordpress:latest
     container_name: wordpress
-    command: bash -c "echo 'ServerName _' >> /etc/apache2/apache2.conf && apache2-foreground"
     ports:
       - "8080:80"
     volumes:
