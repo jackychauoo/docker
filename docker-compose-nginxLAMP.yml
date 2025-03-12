@@ -6,8 +6,8 @@ services:
       - "8080:80"
     volumes:
       - ./html:/var/www/html
-      - .apache/siteAva/:/etc/apache2/sites-available
-      - .apache/siteEnab/:etc/apache2/sites-enabled
+      - ./apache/siteAva:/etc/apache2/sites-available
+      - ./apache/siteEnab:/etc/apache2/sites-enabled
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: lamp_user
@@ -19,8 +19,8 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql
+    command: --max_allowed_packet=32505856      # Set max_allowed_packet to 256M (or any other value)
     environment:
-      MYSQL_MAX_ALLOWED_PACKET: 64M
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: lamp_db
       MYSQL_USER: lamp_user
@@ -38,6 +38,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx-config:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - apache
 
